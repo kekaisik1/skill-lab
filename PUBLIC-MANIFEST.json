@@ -31,8 +31,8 @@
       "sha256": "5d6ad30bbc4a6a97537e04f38b1c182a779c296c79b27f36ccf8505c0febea49"
     },
     "README.md": {
-      "bytes": 5155,
-      "sha256": "03514b08c2d2af91f69d625a8f00fac95b716d7959f941d7dd450197181fa13b"
+      "bytes": 6042,
+      "sha256": "41d9aef40528b0d872e1e6df07808b3f9499e46b7396e75a2a53f1b6d3cc8978"
     },
     "REDISTRIBUTION.md": {
       "bytes": 1792,
@@ -91,8 +91,8 @@
       "sha256": "c073d23263e834f4c329c7ce9d35ba8576134ff18d80a8a4f3b9a72c6d3f088a"
     },
     "public-template/README.md": {
-      "bytes": 5155,
-      "sha256": "03514b08c2d2af91f69d625a8f00fac95b716d7959f941d7dd450197181fa13b"
+      "bytes": 6042,
+      "sha256": "41d9aef40528b0d872e1e6df07808b3f9499e46b7396e75a2a53f1b6d3cc8978"
     },
     "public-template/SECURITY.md": {
       "bytes": 1922,
@@ -219,8 +219,8 @@
       "sha256": "7669d65720754c098a0ca58a0ba70bd8600cba759d1b716baefab61c5ec78abe"
     },
     "skill-lab/scripts/install.py": {
-      "bytes": 12269,
-      "sha256": "a731e8ec00c628a601f2465355b4ea9df64b54d29241de84e3fd80f0ef0f728a"
+      "bytes": 12532,
+      "sha256": "d163be4cbeef575a54121109c7c1113f10eae3c8dfdbfc6e274eece4c7adf781"
     },
     "skill-lab/scripts/launcher.py": {
       "bytes": 3147,
@@ -263,8 +263,8 @@
       "sha256": "d037c52862ab9e8466c23c059cf407a41e65f99603199a50907a300f17c7441d"
     },
     "tests/test_portable_package.py": {
-      "bytes": 7233,
-      "sha256": "beeba0b3cfcddac6f7722ae8c5794c28e71202d485f02962f05d9c9c5ff83f5e"
+      "bytes": 8320,
+      "sha256": "07ad423b4bec2d79fdc59d5edc770cd7e65f6235af8e5d6a736d1a32ae247035"
     },
     "tests/test_preview_cli.py": {
       "bytes": 2700,

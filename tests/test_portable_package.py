@@ -1,11 +1,12 @@
 import importlib.util
 import json
-from pathlib import Path
+from pathlib import Path, PureWindowsPath
 import subprocess
 import sys
 import tarfile
 import tempfile
 import unittest
+from unittest.mock import patch
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -32,7 +33,8 @@ class PortablePackageTests(unittest.TestCase):
                  'skill-lab/agents/openai.yaml': b'interface: {}',
                  'skill-lab/scripts/launcher.py': (ROOT / 'skill-lab/scripts/launcher.py').read_bytes(),
                  'skill-lab/scripts/platform_bridge.py': (ROOT / 'skill-lab/scripts/platform_bridge.py').read_bytes(),
-                 'skill-evaluator/scripts/preview.py': b'import sys\nprint("portable backend")\nraise SystemExit(7 if "fail" in sys.argv else 0)\n'}
+                 'skill-evaluator/scripts/preview.py': b'import sys\nprint("portable backend")\nraise SystemExit(7 if "fail" in sys.argv else 0)\n',
+                 'skill-evaluator/scripts/preview_intake.py': b'import sys\nprint("portable backend")\nraise SystemExit(7 if "fail" in sys.argv else 0)\n'}
         files['release-files.json'] = release.encoded({'schema': 'skill-lab-release-files/1',
                                                      'files': sorted([*files, 'release-files.json'])})
         for name, raw in files.items():
@@ -71,7 +73,7 @@ class PortablePackageTests(unittest.TestCase):
         self.install()
         self.source.rename(self.root / 'unavailable source')
         script = self.destination / 'scripts/launcher.py'
-        result = subprocess.run([sys.executable, str(script), 'fail'], cwd=self.root,
+        result = subprocess.run([sys.executable, str(script), 'example', 'fail'], cwd=self.root,
                                 capture_output=True, text=True, timeout=10)
         self.assertEqual(result.returncode, 7, result.stderr)
         self.assertIn('portable backend', result.stdout)
@@ -86,6 +88,19 @@ class PortablePackageTests(unittest.TestCase):
         ledger.write_text(json.dumps(data))
         with self.assertRaisesRegex(ValueError, 'unowned'):
             self.install()
+
+    def test_ownership_ledger_uses_posix_names_on_windows_hosts(self):
+        self.install()
+        expected = json.loads((self.destination / 'installed-files.json').read_text())['sha256']
+        with patch.object(installer, 'Path', side_effect=lambda value: PureWindowsPath(value)
+                          if isinstance(value, str) else Path(value)):
+            self.assertEqual(installer.owned(self.destination), expected)
+        for name in ('C:/outside', 'kit/file:stream', 'kit/../outside', 'kit\\outside'):
+            ledger = self.destination / 'installed-files.json'
+            ledger.write_text(json.dumps({'schema': 'skill-lab-owned-files/2',
+                                         'sha256': {name: 'a' * 64}}))
+            with self.subTest(name=name), self.assertRaisesRegex(ValueError, 'Unsafe'):
+                installer.owned(self.destination)
 
     def test_update_preserves_edits_and_preflights_every_collision(self):
         self.install()

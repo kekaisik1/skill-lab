@@ -26,6 +26,21 @@ unseen holdouts. A clean scan or passing fixture does not certify safe installat
 
 ## Quick start
 
+Download the [developer prerelease](https://github.com/kekaisik1/skill-lab/releases/tag/v0.2.0-dev),
+extract `skill-lab-0.2.0-dev.tar.gz`, and open the `skill-lab-preview` folder. The asset includes
+its exact content manifest; it contains no credentials, private experiments or installed dependencies.
+For Windows/macOS **native preparation only**, install and try the public example:
+
+```sh
+python3 skill-lab/scripts/install.py --destination "$HOME/.codex/skills/skill-lab" --apply
+python3 "$HOME/.codex/skills/skill-lab/scripts/launcher.py" example --out "$HOME/skill-lab-example"
+```
+
+On Windows PowerShell, replace `python3` with `py -3` and `$HOME` with `$env:USERPROFILE`. To evaluate candidate code, follow
+[Windows WSL2 / macOS Lima setup](PLATFORMS.md). Guest execution is an experimental route and
+must pass its own local checks. Linux users can use the direct engine below.
+
+
 The evaluation engine uses a Linux guest with Python 3.10+, distribution Python, bubblewrap
 and working user/PID/network namespaces. See [platform/setup instructions](PORTABLE.md)
 for Linux and the Windows/macOS host route and its validation limits. Windows/macOS host

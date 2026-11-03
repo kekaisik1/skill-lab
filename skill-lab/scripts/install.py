@@ -5,7 +5,7 @@ import hashlib
 import json
 import importlib.util
 import os
-from pathlib import Path
+from pathlib import Path, PurePosixPath
 import tempfile
 import sys
 
@@ -123,9 +123,12 @@ def owned(destination):
         raise ValueError('Unsupported portable ownership manifest')
     hashes = value['sha256']
     for name, fingerprint in hashes.items():
-        relative = Path(name)
+        # Serialized ownership names use POSIX separators on every host.
+        # Native Path would turn slashes into backslashes on Windows and reject
+        # the very ledger this installer just wrote.
+        relative = PurePosixPath(name)
         if (relative.is_absolute() or '..' in relative.parts or str(relative) != name
-                or not relative.parts or '\\' in name
+                or not relative.parts or '\\' in name or ':' in name or '\x00' in name
                 or not (relative.parts[0] == 'kit' or name in
                         {'SKILL.md', 'agents/openai.yaml', 'scripts/launcher.py', 'scripts/platform_bridge.py', 'installation.json'})
                 or not isinstance(fingerprint, str) or len(fingerprint) != 64):
