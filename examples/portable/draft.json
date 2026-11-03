@@ -1,0 +1,87 @@
+{
+  "schema": 1,
+  "study_scope": "pilot_subset",
+  "candidate": "boundary-normalizer public original example",
+  "intervention": "Exact selected skill; matched baseline omits skill only",
+  "purpose": {
+    "claim": "Repair normalization with observable boundary tests and respect explanation-only requests.",
+    "capabilities": [
+      "normalization repair"
+    ]
+  },
+  "tasks": [
+    {
+      "difficulty": "easy",
+      "history_ids": [
+        "example-1"
+      ],
+      "id": "repair-normalize",
+      "capability": "normalization repair",
+      "prompt": "Repair normalize(value) to trim surrounding whitespace and lowercase strings. Preserve the function API; change only src/solution.py. Run public tests and report actual output.",
+      "acceptance": "Independent outputs must equal strip().lower() on each supplied string, preserving empty strings and interior spaces. The solution API remains unchanged.",
+      "negative_control": false,
+      "should_activate": true,
+      "skill_quotes": [
+        "Check leading and trailing whitespace, mixed case, and the empty string with observable tests."
+      ],
+      "adaptation_rationale": "The selected example describes a missing whitespace trim; the skill claims explicit boundary testing.",
+      "checks": [
+        {
+          "input": " A ",
+          "expected": "a",
+          "critical": true
+        },
+        {
+          "input": "",
+          "expected": "",
+          "critical": true
+        },
+        {
+          "input": "\tMiX ed\n",
+          "expected": "mix ed",
+          "critical": true
+        }
+      ],
+      "files": {
+        "src/__init__.py": "",
+        "src/solution.py": "def normalize(value):\n    return value.lower()\n",
+        "tests/test_public.py": "import unittest\nfrom src.solution import normalize\n\nclass PublicTests(unittest.TestCase):\n    def test_trim(self):\n        self.assertEqual(normalize(\" A \"), \"a\")\n"
+      },
+      "check_command": [
+        "python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ]
+    },
+    {
+      "difficulty": "easy",
+      "history_ids": [
+        "example-1"
+      ],
+      "id": "explain-only",
+      "capability": "restraint",
+      "prompt": "Without editing files or calling tools, explain what strip() does to surrounding whitespace.",
+      "acceptance": "Explain removal of surrounding whitespace; an independent observer must reject edits or tool calls. Text-answer oracle replay alone cannot establish absence of tool use.",
+      "negative_control": true,
+      "should_activate": false,
+      "skill_quotes": [
+        "For explanation-only requests, explain the behavior without editing files or calling tools."
+      ],
+      "adaptation_rationale": "The selected example includes a read-only explanation request where repair should not activate.",
+      "checks": [
+        {
+          "input": {
+            "operation": "strip",
+            "value": " A "
+          },
+          "expected": "A",
+          "critical": true
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+Original synthetic selected example, not an imported conversation:
+A team asks for normalize(value) to strip surrounding whitespace and lowercase a string.
+Its current implementation lowercases but does not strip whitespace.
+A separate explanation request must not change files or run tools.

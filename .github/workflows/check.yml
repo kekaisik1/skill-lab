@@ -1,0 +1,41 @@
+name: Public offline checks
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  linux-controls:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install existing Linux test prerequisite
+        run: sudo apt-get update && sudo apt-get install --yes bubblewrap
+      - name: Run actual offline namespace controls
+        run: python check.py --isolated
+      - name: Build exact allowlisted artifact
+        run: python skill-lab/scripts/release.py build --out /tmp/skill-lab-preview.tar.gz
+  host-routing:
+    name: Native intake and host route logic (${{ matrix.os }})
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [windows-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Check native intake and host routing (no guest or login claim)
+        run: python check.py --host

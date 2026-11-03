@@ -1,0 +1,28 @@
+{
+  "schema": "skill-lab-public-source/1",
+  "copy": [
+    "public-files.json",
+    "skill-lab/scripts/public_export.py",
+    "tests/test_portable_package.py",
+    "tests/test_preview_cli.py",
+    "tests/test_preview_environment.py",
+    "tests/test_preview_intake.py",
+    "tests/test_preview_native.py",
+    "tests/test_fixture_runner.py",
+    "tests/test_offline_acceptance.py",
+    "tests/test_codex_host.py",
+    "tests/test_public_export.py",
+    "tests/test_platform_bridge.py",
+    "tests/test_platform_launcher.py",
+    "tests/test_portable_intake.py"
+  ],
+  "templates": {
+    "README.md": "public-template/README.md",
+    "CONTRIBUTING.md": "public-template/CONTRIBUTING.md",
+    "SECURITY.md": "public-template/SECURITY.md",
+    ".gitignore": "public-template/.gitignore",
+    "check.py": "public-template/check.py",
+    ".github/workflows/check.yml": "public-template/.github/workflows/check.yml",
+    "EVALUATION-STATUS.md": "public-template/EVALUATION-STATUS.md"
+  }
+}

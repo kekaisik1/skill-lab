@@ -1,0 +1,292 @@
+{
+  "boundary_proof": "not distributed; every installation must validate locally",
+  "contains_private_experiment_evidence": false,
+  "files": {
+    ".github/workflows/check.yml": {
+      "bytes": 1243,
+      "sha256": "c482908a5a6ce2a10c44d69245dde394ad3b7dc2fc77c314e8ca838135c202e2"
+    },
+    ".gitignore": {
+      "bytes": 158,
+      "sha256": "1b83cf40ddb5b2270f6512ac501e2598f55ef11ffb81a69363340d047e617e22"
+    },
+    "CONTRIBUTING.md": {
+      "bytes": 2724,
+      "sha256": "3faf09e060e9675902ea9a9f9c7c300922252115b6afb75355c39b6ca8bb5fad"
+    },
+    "EVALUATION-STATUS.md": {
+      "bytes": 2104,
+      "sha256": "c073d23263e834f4c329c7ce9d35ba8576134ff18d80a8a4f3b9a72c6d3f088a"
+    },
+    "LICENSE": {
+      "bytes": 1079,
+      "sha256": "b65b9326276c067061cb1933b4faba998398f60d5e061e244636038a13b86500"
+    },
+    "PLATFORMS.md": {
+      "bytes": 6770,
+      "sha256": "1cc7981705403f7e874d1dd77da10650105e9dbf404662fe7aaa6fd5cf07af74"
+    },
+    "PORTABLE.md": {
+      "bytes": 9504,
+      "sha256": "5d6ad30bbc4a6a97537e04f38b1c182a779c296c79b27f36ccf8505c0febea49"
+    },
+    "README.md": {
+      "bytes": 5155,
+      "sha256": "03514b08c2d2af91f69d625a8f00fac95b716d7959f941d7dd450197181fa13b"
+    },
+    "REDISTRIBUTION.md": {
+      "bytes": 1792,
+      "sha256": "683f01e9e1d0cd6af944cde8b4541733601d53951b430e41f7bef60ecccfe78f"
+    },
+    "SECURITY.md": {
+      "bytes": 1922,
+      "sha256": "e7cf020327e2f3fa42b79849c371f1bcf89540437ead55d07385e9cf9d14c15c"
+    },
+    "acceptance.py": {
+      "bytes": 8754,
+      "sha256": "e5d143caaffea94a60e68b3f780bf3ac0f6a1b17de4bfdeafa48f9cd404f5c2b"
+    },
+    "check.py": {
+      "bytes": 2185,
+      "sha256": "6374528ad3e2774eb5e2529ef5bb1d2af7918eb8897f03c1e4a1b7c0330355e2"
+    },
+    "examples/portable/README.md": {
+      "bytes": 2308,
+      "sha256": "79e75661593673e32489109c273d73e565de87fbfa47e20793e842ab7fb0769b"
+    },
+    "examples/portable/draft.json": {
+      "bytes": 3084,
+      "sha256": "32122a3eee843f3998e6ad8ae722d9e18e242e2d7ea4927b0a513966f6560da1"
+    },
+    "examples/portable/selected/request.txt": {
+      "bytes": 292,
+      "sha256": "5fd4f4414748b6fb1ab4433cccb582c8c36e1a3542b06403a64377d8c745fc47"
+    },
+    "examples/portable/skill/SKILL.md": {
+      "bytes": 558,
+      "sha256": "f35432eb9b3500e9fe89d3835bb31a6286730267269df3c90863b61abe77b3f2"
+    },
+    "fixtures/benign/SKILL.md": {
+      "bytes": 162,
+      "sha256": "673aabdb578f50e7c6b704e4bf63f01f12014b1619a640ef8a12c52fac08ed1d"
+    },
+    "public-files.json": {
+      "bytes": 984,
+      "sha256": "d8be81be196be2d72999da9c376a86a1bb956655a60390b1adcf7f4798eb127f"
+    },
+    "public-template/.github/workflows/check.yml": {
+      "bytes": 1243,
+      "sha256": "c482908a5a6ce2a10c44d69245dde394ad3b7dc2fc77c314e8ca838135c202e2"
+    },
+    "public-template/.gitignore": {
+      "bytes": 158,
+      "sha256": "1b83cf40ddb5b2270f6512ac501e2598f55ef11ffb81a69363340d047e617e22"
+    },
+    "public-template/CONTRIBUTING.md": {
+      "bytes": 2724,
+      "sha256": "3faf09e060e9675902ea9a9f9c7c300922252115b6afb75355c39b6ca8bb5fad"
+    },
+    "public-template/EVALUATION-STATUS.md": {
+      "bytes": 2104,
+      "sha256": "c073d23263e834f4c329c7ce9d35ba8576134ff18d80a8a4f3b9a72c6d3f088a"
+    },
+    "public-template/README.md": {
+      "bytes": 5155,
+      "sha256": "03514b08c2d2af91f69d625a8f00fac95b716d7959f941d7dd450197181fa13b"
+    },
+    "public-template/SECURITY.md": {
+      "bytes": 1922,
+      "sha256": "e7cf020327e2f3fa42b79849c371f1bcf89540437ead55d07385e9cf9d14c15c"
+    },
+    "public-template/check.py": {
+      "bytes": 2185,
+      "sha256": "6374528ad3e2774eb5e2529ef5bb1d2af7918eb8897f03c1e4a1b7c0330355e2"
+    },
+    "release-files.json": {
+      "bytes": 1816,
+      "sha256": "188ca094052980a5bd1cd917cfb38cb5cc5c11e6af02a33a83fdea6a2204a248"
+    },
+    "skill-evaluator/SKILL.md": {
+      "bytes": 5596,
+      "sha256": "85509ef9235c9618208188f94747500b651159899cd0a999d9557e922cd43df0"
+    },
+    "skill-evaluator/references/process-runner.md": {
+      "bytes": 3259,
+      "sha256": "2b24c4b3d8c30e8065e87b23ad6306c3a43f91c84f7efdc9fdd07293c54be79b"
+    },
+    "skill-evaluator/references/protocol.md": {
+      "bytes": 9297,
+      "sha256": "29ce31a5297c8479b3e292401ba7dbd329b59d04fbf62a67b5044cb3e6b4e1b4"
+    },
+    "skill-evaluator/references/runner-contract.md": {
+      "bytes": 4879,
+      "sha256": "c6283053258a0007a7e48c99dcd4d1b5a471e9e0fd369471a1ee9ea581479612"
+    },
+    "skill-evaluator/scripts/benchmark_builder.py": {
+      "bytes": 11439,
+      "sha256": "d1a255a25559a12f50f5f1b9d8133f38564e1c00168d27087728bfd38f2eac97"
+    },
+    "skill-evaluator/scripts/claude_boundary.py": {
+      "bytes": 17942,
+      "sha256": "fc70fe7a03d26f5425f538e38725042fd35c99a3ba7a0be3f8fe925ebf451bcb"
+    },
+    "skill-evaluator/scripts/codex_boundary.py": {
+      "bytes": 32345,
+      "sha256": "fe63b52a39e35459f34cbce29e796874f3ac29736918b31a6b04ba1639551b6c"
+    },
+    "skill-evaluator/scripts/codex_host.py": {
+      "bytes": 23110,
+      "sha256": "ecee14e507a6634964e18085d74e7e41fb788b1bc6fd6d5c66fcda8e6aefc7aa"
+    },
+    "skill-evaluator/scripts/evaluate.py": {
+      "bytes": 22400,
+      "sha256": "c1a96176886086d9effb995db248a332f3b4b02eb87e08ba592c06859a92d59f"
+    },
+    "skill-evaluator/scripts/experiment.py": {
+      "bytes": 4064,
+      "sha256": "406c98c933d941e311608e1b5564cc486b406f73a3a31f98737691f369b82c8e"
+    },
+    "skill-evaluator/scripts/experiment_report.py": {
+      "bytes": 21235,
+      "sha256": "ede2bdae5a76ce8c117f43c2bbf9fe96a094b8353a1cba0f23fc120379691d6a"
+    },
+    "skill-evaluator/scripts/fixture_runner.py": {
+      "bytes": 12038,
+      "sha256": "5172885db4d42b3d3f313f8ed134ba02164525e213ae30b7c28369c8b3705484"
+    },
+    "skill-evaluator/scripts/frontend_grade.py": {
+      "bytes": 29550,
+      "sha256": "ce7aa0965d3abf01bf53f8d5f3107dbc501fc4bed1539e4a45c91b0e87725d4e"
+    },
+    "skill-evaluator/scripts/full_ub_pilot.py": {
+      "bytes": 19138,
+      "sha256": "e57d737a0958b7b1ac17c03958d245c469b2c420cf4558394f07d5b23fd88a19"
+    },
+    "skill-evaluator/scripts/lab.py": {
+      "bytes": 48896,
+      "sha256": "ad100b6d65f681f6c9679eaa5da3f6fae14400387660d77f5015210315072da1"
+    },
+    "skill-evaluator/scripts/lab_mcp.py": {
+      "bytes": 16942,
+      "sha256": "ddd695ffdcfeaa012406ccb41b94cbb8123ba5e6e92e00479eb3a79b9e6746b1"
+    },
+    "skill-evaluator/scripts/lab_mcp_boundary.py": {
+      "bytes": 23634,
+      "sha256": "3f47e8d5026bc97a98fb7b603d955971be7a38eb05548786f90a0141b2ef057a"
+    },
+    "skill-evaluator/scripts/offline_acceptance.py": {
+      "bytes": 8494,
+      "sha256": "fb2f5856759c9f852174730c782ee283e82e2181b544b84b59c20f4c2ba6231b"
+    },
+    "skill-evaluator/scripts/preview.py": {
+      "bytes": 8174,
+      "sha256": "9cf61c95cfc149a1874b569050d72897c677e79e64eee21a13c35a3fabef634a"
+    },
+    "skill-evaluator/scripts/preview_environment.py": {
+      "bytes": 9889,
+      "sha256": "9a2e52fc09a5180722c6e1f3e295c0c6099f79fce1cb60075393bd3f99f61f65"
+    },
+    "skill-evaluator/scripts/preview_intake.py": {
+      "bytes": 9923,
+      "sha256": "aa41cbfc1737c9eccf5d6fe2b3b57ac006af8ac8e4632d33f187544fcd5d9153"
+    },
+    "skill-evaluator/scripts/preview_native.py": {
+      "bytes": 21079,
+      "sha256": "3b6fac660409da4e4b29bc29b164064b8f67f78db72e68c5500e9b40b5a3ed3b"
+    },
+    "skill-evaluator/scripts/skill_intake.py": {
+      "bytes": 2223,
+      "sha256": "80059314339aa496011558ff3c7b4790eae4f95efc28e2211f1cc4b0ce659a3c"
+    },
+    "skill-evaluator/scripts/skill_safety.py": {
+      "bytes": 17778,
+      "sha256": "ed0ba24df6e77c6da406071d1b2328e4a78cac5115e0eb63430cb3e10bbe7d80"
+    },
+    "skill-evaluator/scripts/ub_grade.py": {
+      "bytes": 15440,
+      "sha256": "9bc8239fdc14b35ecf84b3149b096fdc849e25a4f61f49f758ef678d698bfea6"
+    },
+    "skill-evaluator/scripts/ub_runtime.py": {
+      "bytes": 18776,
+      "sha256": "4107980279c57d47de7ac66176957d416bb94ba7c913d42df4c74707d067584c"
+    },
+    "skill-lab/SKILL.md": {
+      "bytes": 9933,
+      "sha256": "64e4ddd12cf41a6b662491a3a481d21b6dff40b3d48cf455e322c4812f7e0f5b"
+    },
+    "skill-lab/agents/openai.yaml": {
+      "bytes": 299,
+      "sha256": "7669d65720754c098a0ca58a0ba70bd8600cba759d1b716baefab61c5ec78abe"
+    },
+    "skill-lab/scripts/install.py": {
+      "bytes": 12269,
+      "sha256": "a731e8ec00c628a601f2465355b4ea9df64b54d29241de84e3fd80f0ef0f728a"
+    },
+    "skill-lab/scripts/launcher.py": {
+      "bytes": 3147,
+      "sha256": "c163940f60d495312e62f4bbd10f5a60bb1e4268c57cf82ef39c9d77e388e51a"
+    },
+    "skill-lab/scripts/platform_bridge.py": {
+      "bytes": 10262,
+      "sha256": "cff5f8bc14a8f98f79559e1683e76d1169e70e2086eb65153947ec1511d88950"
+    },
+    "skill-lab/scripts/public_export.py": {
+      "bytes": 5654,
+      "sha256": "e7f9dcde148871606ffb5a4407b82f6593250e35b2b0e722f55719fb77ec562d"
+    },
+    "skill-lab/scripts/release.py": {
+      "bytes": 4898,
+      "sha256": "5545fdeb190ccaa183764fd8d8c4e58b415301920ce637aef0a4037422744081"
+    },
+    "tests/test_codex_host.py": {
+      "bytes": 6116,
+      "sha256": "038a547e072bfa4f4d8bd63dd8e0b3f0f3868193fc5bb0be0bad628aed7b752a"
+    },
+    "tests/test_fixture_runner.py": {
+      "bytes": 5065,
+      "sha256": "fbab4f7ef20f1fb385b067864149f67b06885d4584778a5e7ec609ccea9c1da3"
+    },
+    "tests/test_offline_acceptance.py": {
+      "bytes": 10284,
+      "sha256": "d79ddec0660a61815890e3219c1ba5ac18783581c2a5d34400fcbc43a1041c9e"
+    },
+    "tests/test_platform_bridge.py": {
+      "bytes": 6911,
+      "sha256": "511cfb69b2fcb52f27abc93415e15e585c1f27a4a106a51708cdd8008f71f245"
+    },
+    "tests/test_platform_launcher.py": {
+      "bytes": 3636,
+      "sha256": "908ff0e11961858f387a02bb291302eef3704ccb193a5360ba702cb0ed9447dc"
+    },
+    "tests/test_portable_intake.py": {
+      "bytes": 3233,
+      "sha256": "d037c52862ab9e8466c23c059cf407a41e65f99603199a50907a300f17c7441d"
+    },
+    "tests/test_portable_package.py": {
+      "bytes": 7233,
+      "sha256": "beeba0b3cfcddac6f7722ae8c5794c28e71202d485f02962f05d9c9c5ff83f5e"
+    },
+    "tests/test_preview_cli.py": {
+      "bytes": 2700,
+      "sha256": "c9c82db2e32d1630960fafd22621762e47a75971abd5ac3561349f706df415b9"
+    },
+    "tests/test_preview_environment.py": {
+      "bytes": 5284,
+      "sha256": "d0d28524bf6e482eec25280ea7d7c92da07851f2888b11f7fd20662080d0bf76"
+    },
+    "tests/test_preview_intake.py": {
+      "bytes": 6524,
+      "sha256": "1c2475f2571a48d16ff5c74900a79fce59f72bdbeb3f35db9eb99a5b666970c7"
+    },
+    "tests/test_preview_native.py": {
+      "bytes": 13810,
+      "sha256": "32ccb78450c99b28cb7b9fd8b84557833f302fc14cb666bad7c293b97c360fc1"
+    },
+    "tests/test_public_export.py": {
+      "bytes": 4520,
+      "sha256": "d519ba24795630b211892b87a7badfa9abfbd0581f7c9b984c4ab00b5a3ac7ec"
+    }
+  },
+  "license_present": true,
+  "schema": "skill-lab-public-source/1"
+}

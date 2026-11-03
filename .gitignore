@@ -1,0 +1,15 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.env
+.env.*
+auth.json
+config.toml
+installation.json
+installed-files.json
+runs/
+evidence/
+private/
+state/
+dist/
+*.tar.gz

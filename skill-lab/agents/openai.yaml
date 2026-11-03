@@ -1,0 +1,4 @@
+interface:
+  display_name: "Skill Lab"
+  short_description: "Test coding skills with auditable task evidence"
+  default_prompt: "Use $skill-lab to check local setup, run the offline preview, and return its verified decision report. Prepare an exact plan and ask before any native model comparison."
