@@ -45,6 +45,18 @@ def offline_report(out):
 
 def report(out, export=None):
     out = Path(out)
+    if (out / 'adoption-plan.json').exists():
+        if export:
+            raise ValueError('Adoption reports contain private decision context; automatic export is unavailable')
+        import adoption_journey
+        return adoption_journey.main(['report', str(out)])
+    if (out / 'manifest.json').exists() and json.loads((out / 'manifest.json').read_text()).get('schema') == 'skill-lab-ub-adoption/1':
+        if export:
+            raise ValueError('Private UB evidence is excluded from automatic export')
+        import adoption_ub, adoption
+        decision = adoption_ub.report(out)
+        print(adoption.render(decision))
+        return 0 if decision['experiment_status'] in {'valid', 'valid_limited'} else 2
     if (out / 'native-plan.json').exists():
         import preview_native
         decision, text = preview_native.report(out)
@@ -82,6 +94,20 @@ def run_offline(out):
 
 
 def main(argv=None):
+    arguments = sys.argv[1:] if argv is None else argv
+    if arguments[:2] == ['adoption', 'intake']:
+        import adoption_intake
+        return adoption_intake.main(arguments[2:])
+    if arguments[:2] == ['adoption', 'ub']:
+        try:
+            import adoption_ub
+        except ImportError:
+            print('Private UB adapter is not bundled; custom skills require authoring and an independently validated adapter.', file=sys.stderr)
+            return 2
+        return adoption_ub.main(arguments[2:])
+    if arguments[:1] == ['adoption']:
+        import adoption_journey
+        return adoption_journey.main(arguments[1:])
     parser = argparse.ArgumentParser(description=__doc__)
     commands = parser.add_subparsers(dest='command', required=True)
     commands.add_parser('list')

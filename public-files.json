@@ -14,7 +14,9 @@
     "tests/test_public_export.py",
     "tests/test_platform_bridge.py",
     "tests/test_platform_launcher.py",
-    "tests/test_portable_intake.py"
+    "tests/test_portable_intake.py",
+    "tests/test_adoption.py",
+    "tests/test_adoption_journey.py"
   ],
   "templates": {
     "README.md": "public-template/README.md",

@@ -41,6 +41,15 @@ class PlatformLauncherTests(unittest.TestCase):
                             self.assertEqual(launcher.main([operation, '--out', 'selected-local-output']), 0)
                             self.assertEqual(call.call_args.args[0], [sys.executable, str(self.script), operation, '--out', 'selected-local-output'])
 
+    def test_adoption_intake_is_native_and_strips_dispatch_prefix(self):
+        script = self.script.with_name('adoption_intake.py')
+        script.write_text('print("decision intake")')
+        for host in ('Windows', 'Darwin'):
+            with patch.object(launcher.platform, 'system', return_value=host):
+                with patch.object(launcher.subprocess, 'call', return_value=0) as call:
+                    self.assertEqual(launcher.main(['adoption', 'intake', '--answers', 'local.json']), 0)
+                    self.assertEqual(call.call_args.args[0], [sys.executable, str(script), '--answers', 'local.json'])
+
     def test_unconfigured_nonlinux_execution_stops_before_backend(self):
         for host in ('Windows', 'Darwin'):
             with patch.object(launcher.platform, 'system', return_value=host), patch.object(launcher, 'backend') as backend:

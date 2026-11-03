@@ -43,6 +43,9 @@
     "skill-evaluator/scripts/skill_intake.py",
     "LICENSE",
     "PLATFORMS.md",
-    "skill-lab/scripts/platform_bridge.py"
+    "skill-lab/scripts/platform_bridge.py",
+    "skill-evaluator/scripts/adoption.py",
+    "skill-evaluator/scripts/adoption_journey.py",
+    "skill-evaluator/scripts/adoption_intake.py"
   ]
 }

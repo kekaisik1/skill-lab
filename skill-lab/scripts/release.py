@@ -61,7 +61,7 @@ def payload(root=ROOT):
                                  'config.toml', 'config.json', 'history.jsonl'}):
             raise ValueError(f'Private/local release path forbidden: {name}')
         files[name] = safe_file(root, name).read_bytes()
-    manifest = {'schema': 'skill-lab-release/1', 'version': '0.2.0-dev',
+    manifest = {'schema': 'skill-lab-release/1', 'version': '0.3.0-dev',
                 'evidence_class': 'software_only_no_local_boundary_proof',
                 'files': {name: {'sha256': digest(raw), 'bytes': len(raw)}
                           for name, raw in files.items()}}

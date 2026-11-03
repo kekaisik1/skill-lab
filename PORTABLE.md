@@ -148,3 +148,20 @@ renames the extracted source away, runs the installed commands, fresh security/n
 failure/report/ownership checks. All native provider traffic in acceptance is fake local traffic.
 No real model calls or real authentication are used. See the project handoff for actual executed results;
 new native demo performance and another person's interactive skill discovery still require validation.
+
+## Adoption decision preview
+
+The installed chat skill captures intended work, improvement thresholds and budget before proposing a benchmark. `adoption intake` reuses explicit chat answers and the existing inert source selector. `adoption review` requires a hash-bound independent semantic review plus executable grading controls, and reports concrete design blockers. `adoption budgets` compares quick/balanced/deeper designs; repetitions do not create independent work samples.
+
+Try the executable software journey (no model calls):
+
+```sh
+python3 "$LAB" adoption example --out /tmp/adoption-example-NEW
+python3 "$LAB" adoption review --proposal /tmp/adoption-example-NEW/proposal.json
+python3 "$LAB" adoption plan --proposal /tmp/adoption-example-NEW/proposal.json --budget balanced --out /tmp/adoption-plan-NEW.json
+python3 "$LAB" adoption run --plan /tmp/adoption-plan-NEW.json --out /tmp/adoption-run-NEW
+python3 "$LAB" adoption report /tmp/adoption-run-NEW
+python3 "$LAB" adoption exercise --out /tmp/adoption-exercise-NEW
+```
+
+These public authored controls exercise decision logic and receipts, not model effectiveness. Only exact registered task/skill adapters execute; arbitrary project preparation remains authoring assistance. Native `codex-demo` remains a fixed public smoke, requiring its own approved plan. New real studies must freeze a reviewed relevant benchmark, analysis, actual adapter limits and exact approval before inference. A separate private UB adapter is not distributed. Windows/macOS support native adoption intake; execution/review uses the configured Linux guest.

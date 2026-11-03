@@ -40,10 +40,13 @@ def main(argv=None):
         skill_dir = Path(__file__).resolve().parents[1]
         route = skill_dir / 'platform.json'
         installation = skill_dir / 'installation.json'
-        if (platform.system() != 'Linux' and arguments[:1] in (['prepare'], ['example'])
+        if (platform.system() != 'Linux' and (arguments[:1] in (['prepare'], ['example']) or arguments[:2] == ['adoption', 'intake'])
                 and installation.is_file()
                 and json.loads(installation.read_text()).get('schema') == 'skill-lab-installation/2'):
-            script = backend().with_name('preview_intake.py')
+            intake = arguments[:2] == ['adoption', 'intake']
+            script = backend().with_name('adoption_intake.py' if intake else 'preview_intake.py')
+            if intake:
+                arguments = arguments[2:]
             if not script.is_file():
                 raise ValueError('Portable intake is missing; reinstall the release artifact.')
             return subprocess.call([sys.executable, str(script), *arguments],

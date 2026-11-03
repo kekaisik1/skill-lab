@@ -86,6 +86,41 @@ def worker(root):
     stdout, stderr = p.communicate(timeout=15)
     (root / 'interrupt.json').write_text(json.dumps({'exit_code': p.returncode, 'stdout': stdout, 'stderr': stderr}))
     command('actual-interrupted-report', [launcher, 'report', root / 'actual-interrupted'], expected=2)
+    # Exercise adoption through the installed artifact with the source parked.
+    # These are authored software controls and consume no model budget.
+    answers = root / 'decision-answers.json'
+    answers.write_text(json.dumps({'intended_work': 'Python maintenance', 'improvement': 'Prevent defects',
+        'max_regression': 0, 'max_token_overhead': .5, 'max_time_overhead': .5, 'budget': 'deeper'}))
+    command('adoption-chat-intake', [launcher, 'adoption', 'intake', '--skill', destination / 'kit/fixtures/benign',
+            '--pin', 'a' * 40, '--answers', answers, '--out', root / 'decision-intake'])
+    assert not json.loads((root / 'decision-intake/decision.json').read_text())['questions']
+    adoption = root / 'adoption'
+    command('adoption-example', [launcher, 'adoption', 'example', '--out', adoption])
+    proposal = adoption / 'proposal.json'
+    command('adoption-adequacy-review', [launcher, 'adoption', 'review', '--proposal', proposal])
+    for budget in ('quick', 'balanced', 'deeper'):
+        command('adoption-budget-' + budget,
+                [launcher, 'adoption', 'plan', '--proposal', proposal, '--budget', budget,
+                 '--out', root / ('adoption-' + budget + '-plan.json')])
+    plans = [json.loads((root / ('adoption-' + name + '-plan.json')).read_text())
+             for name in ('quick', 'balanced', 'deeper')]
+    assert [len(plan['schedule']) for plan in plans] == [6, 10, 14]
+    assert all(plan['total_token_threshold'] == 0 for plan in plans)
+    command('adoption-offline-run', [launcher, 'adoption', 'run',
+            '--plan', root / 'adoption-quick-plan.json', '--out', root / 'adoption-run'])
+    command('adoption-verified-report', [launcher, 'adoption', 'report', root / 'adoption-run'])
+    command('adoption-executed-scenarios', [launcher, 'adoption', 'exercise',
+            '--out', root / 'adoption-exercise'])
+    exercise = json.loads((root / 'adoption-exercise/exercise.json').read_text())
+    assert exercise.get('schema') == 'skill-lab-adoption-exercise/1'
+    assert exercise.get('status') == 'pass' and exercise.get('scenarios'), 'Adoption scenarios must execute'
+    assert {row['scenario'] for row in exercise['scenarios']} == {
+        'improvement', 'regression', 'equal', 'overhead', 'workflow',
+        'missing', 'skipped', 'tampered', 'interrupted', 'infrastructure'}
+    executed = json.loads((root / 'adoption-run/execution.json').read_text())
+    assert executed['status'] == 'completed' and len(executed['attempts']) == 6
+    assert (root / 'adoption-run/adoption-plan.json').is_file()
+    assert (root / 'adoption-run/REPORT.md').read_text().strip(), 'Adoption report must be generated'
     # Runtime drift must never silently re-pin.
     config = root / 'state/runtime/python/bin/python'
     config.write_text(config.read_text() + '# changed\n')
@@ -103,6 +138,8 @@ def worker(root):
     result = {'status': 'pass', 'evidence_class': 'executed_release_software_and_fake_security_controls',
               'real_model_calls': 0, 'checks': len(records), 'original_home_checkout_visible': False,
               'native_boundary': json.loads((root / 'boundary/report.json').read_text())['native'],
+              'adoption': {'status': exercise['status'], 'evidence_class': 'authored_software_controls',
+                           'budget_choices': ['quick', 'balanced', 'deeper']},
               'limits': 'Injected evidence faults are regression tests, not real model performance. Native auth/live comparison untested.'}
     (root / 'acceptance.json').write_text(json.dumps(result, indent=2))
     print(json.dumps(result, indent=2))
