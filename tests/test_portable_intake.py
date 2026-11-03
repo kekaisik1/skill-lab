@@ -26,7 +26,7 @@ result=preview_intake.example(Path(sys.argv[2]))
 print(json.dumps(result))
 '''
             result = subprocess.run([sys.executable, '-B', '-c', code,
-                                     str(ROOT / 'skill-evaluator/scripts'), str(Path(tmp) / 'example')],
+                                     str(ROOT / 'skill-evaluator/scripts'), str(Path(tmp).resolve() / 'example')],
                                     capture_output=True, text=True, timeout=30)
             self.assertEqual(result.returncode, 0, result.stderr)
             report = json.loads(result.stdout)
@@ -47,7 +47,7 @@ print(json.dumps(result))
 
     def test_selected_skill_does_not_execute_hostile_script(self):
         with tempfile.TemporaryDirectory() as tmp:
-            root = Path(tmp)
+            root = Path(tmp).resolve()
             skill = root / 'skill'
             skill.mkdir()
             (skill / 'SKILL.md').write_text('Review labels only. Never change verbatim text.\n')

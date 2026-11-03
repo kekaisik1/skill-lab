@@ -279,8 +279,8 @@
       "sha256": "df4113d92ac12237d9083c5fe803b7ed8ae07868a10e28036d9b8c11f122bd76"
     },
     "tests/test_portable_intake.py": {
-      "bytes": 3233,
-      "sha256": "d037c52862ab9e8466c23c059cf407a41e65f99603199a50907a300f17c7441d"
+      "bytes": 3253,
+      "sha256": "ade43d28cff76373df791f8bbee6bd7caf2693aa731dc2df76fa0e9c85fc50bf"
     },
     "tests/test_portable_package.py": {
       "bytes": 8320,
