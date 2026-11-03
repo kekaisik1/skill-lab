@@ -87,7 +87,7 @@ telemetry or automatic upload. Report export writes a small fixed summary, not a
 sources or raw evidence. An approved native comparison sends its selected public task/skill
 prompt through Codex's native service; it is not an offline operation.
 
-See [current evaluation status](EVALUATION-STATUS.md) for the actual incomplete UB findings and the distinction between software tests and model performance.
+See [current evaluation status](EVALUATION-STATUS.md) for the completed six-session UB pilot, the earlier incomplete study, and the distinction between software tests and model performance.
 
 ## Evidence and limitations
 
